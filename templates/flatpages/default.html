@@ -1,0 +1,21 @@
+{% load bootstrap_toolkit %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ flatpage.title }}</title>
+    {% bootstrap_stylesheet_tag %}
+  </head>
+  <body>
+    <div class="container">
+    	<h1>{{ flatpage.title }}</h1>
+    	{{ flatpage.content }}
+    	<form class="form-{{ layout }}" method="get" action="/search/">
+        <p><label for="id_q">Search:</label>
+        <input type="text" name="q" id="id_q" value="{{ query }}" class="input-medium search-query"/>
+        <button type="submit" class="btn btn-primary"/>
+          Submit <i class="icon-search icon-white"></i>
+        </button></p>
+      </form>
+    </div>
+  </body>
+</html>

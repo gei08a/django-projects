@@ -1,0 +1,15 @@
+{% load bootstrap_toolkit %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ object.title }} - {{ object.author }}</title>
+    {% bootstrap_stylesheet_tag %}
+  </head>
+  <body>
+    <div class="container">
+      <h1>{{ object.title }}</h1>
+      {{ object.body_html|safe }}
+      <p class="pull-right muted"><small><em>Published by <strong>{{ object.author }}</strong> on {{ object.pub_date|date:"F j, Y" }}.</em></small></p>
+    </div>
+  </body>
+</html>

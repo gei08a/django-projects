@@ -1,0 +1,19 @@
+{% load bootstrap_toolkit %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Links published on {{ month|date:"F j, Y" }}</title>
+    {% bootstrap_stylesheet_tag %}
+  </head>
+  <body>
+    <div class="container">
+      <h1>Links published on {{ month|date:"F j, Y" }}</h1>
+      {% for link in object_list %}
+        <h2>{{ link.title }}</h2>
+        <p>Published on {{ link.pub_date|date:"F j, Y" }} by {{ link.posted_by }}.</p>
+        {{ link.description_html|truncatewords_html:"50"|safe }}
+        <p><a href="{{ link.get_absolute_url }}">Read full link</a></p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

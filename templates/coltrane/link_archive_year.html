@@ -1,0 +1,18 @@
+{% load bootstrap_toolkit %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Entries published in {{ year }}</title>
+    {% bootstrap_stylesheet_tag %}
+  </head>
+  <body>
+    <div class="container">
+      <h1>Entries published in {{ year }}</h1>
+      <ul>
+      {% for month in date_list %}
+        <li><a href="/weblog/links/{{ year }}/{{ month|date:"b" }}/">{{ month|date:"F" }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>

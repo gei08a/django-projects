@@ -1,0 +1,48 @@
+{% load bootstrap_toolkit %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>My weblog {% block title %}{% endblock %}</title>
+	{% bootstrap_stylesheet_tag %}
+</head>
+
+<body class="{% block bodyclass %}{% endblock %}">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2">
+        <div id="sidebar">
+          <h2>Navigation</h2>
+          <ul id="main-nav">
+            <li id="main-nav-entries">
+              <a href="{% url coltrane_entry_archive_index %}">Entries</a>
+            </li>
+            <li id="main-nav-links">
+              <a href="{% url coltrane_link_archive_index %}">Links</a>
+            </li>
+            <li id="main-nav-categories">
+              <a href="{% url coltrane_category_list %}">Categories</a>
+            </li>
+            <li id="main-nav-tags">
+              <a href="{% url coltrane_tag_list %}">Tags</a>
+            </li>
+          </ul>
+          <h4>What is this?</h4>
+          {% block whatis %}
+          {% endblock %}
+        </div>
+      </div>
+      <div class="span10">
+        <div id="header">
+          <h1 id="branding">My weblog</h1>
+        </div>
+        <div id="content">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,15 +1,5 @@
-{% load bootstrap_toolkit %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{ object.title }} - {{ object.posted_by }}</title>
-    {% bootstrap_stylesheet_tag %}
-  </head>
-  <body>
-    <div class="container">
-      <h1>{{ object.title }}</h1>
-      {{ object.description_html|safe }}
-      <p class="pull-right muted"><small><em>Published by <strong>{{ object.posted_by }}</strong> on {{ object.pub_date|date:"F j, Y" }}.</em></small></p>
-    </div>
-  </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+  {{ object.description_html|safe }}
+  <p><a href="{{ object.url }}">Visit site</a></p>
+{% endblock %}

@@ -1,19 +1,16 @@
-{% load bootstrap_toolkit %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Links index</title>
-    {% bootstrap_stylesheet_tag %}
-  </head>
-  <body>
-    <div class="container">
-      <h1>Links index</h1>
-      {% for link in latest %}
-        <h2>{{ link.title }}</h2>
-        <p>Published on {{ link.pub_date|date:"F j, Y" }}.</p>
-        {{ link.description_html|truncatewords_html:"50"|safe }}
-        <p><a href="{{ link.get_absolute_url }}">Read full link</a></p>
-      {% endfor %}
-    </div>
-  </body>
-</html>
+{% extends "coltrane/base_links.html" %}
+
+{% block title %}{{ block.super }} | Latest links{% endblock %}
+
+{% block content %}
+{% for link in latest %}
+  <h2>{{ link.title }}</h2>
+  <p>Published on {{ link.pub_date|date:"F j, Y" }}.</p>
+  {{ link.description_html|truncatewords_html:"50"|safe }}
+  <p><a href="{{ link.get_absolute_url }}">Read full link</a></p>
+{% endfor %}
+{% endblock %}
+
+{% block whatis %}
+<p>This is a list of the latest {{ latest.count }} links published in my blog.</p>
+{% endblock %}

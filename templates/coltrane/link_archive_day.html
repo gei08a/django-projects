@@ -1,19 +1,19 @@
-{% load bootstrap_toolkit %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Links published on {{ day|date:"F j, Y" }}</title>
-    {% bootstrap_stylesheet_tag %}
-  </head>
-  <body>
-    <div class="container">
-      <h1>Links published on {{ day|date:"F j, Y" }}</h1>
-      {% for link in object_list %}
-        <h2>{{ link.title }}</h2>
-        <p>Published on {{ link.pub_date|date:"F j, Y" }} by {{ link.posted_by }}.</p>
-        {{ link.description_html|truncatewords_html:"50"|safe }}
-        <p><a href="{{ link.get_absolute_url }}">Read full link</a></p>
-      {% endfor %}
-    </div>
-  </body>
-</html>
+{% extends "coltrane/base_links.html" %}
+
+{% block title %}
+{{ block.super }} | Links in {{ day|date:"F j, Y" }}
+{% endblock %}
+
+{% block content %}
+{% for link in object_list %}
+  <h2>{{ link.title }}</h2>
+  <p>Published on {{ link.pub_date|date:"F j, Y" }} by {{ link.posted_by }}.</p>
+  {{ link.description_html|truncatewords_html:"50"|safe }}
+  <p><a href="{{ link.get_absolute_url }}">Read full link</a></p>
+{% endfor %}
+{% endblock %}
+
+{% block whatis %}
+<p>This is a list of links published in my blog in
+  {{ day|date:"F j, Y" }}.</p>
+{% endblock %}

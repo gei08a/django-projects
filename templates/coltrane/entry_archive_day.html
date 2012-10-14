@@ -1,4 +1,4 @@
-{% extends "base_entries.html" %}
+{% extends "coltrane/base_entries.html" %}
 
 {% block title %}
 {{ block.super }} | Entries in {{ day|date:"F, Y" }}
@@ -19,5 +19,5 @@
 
 {% block whatis %}
 <p>This is a list of entries published in my blog in
-  {{ day|date:"F, Y" }}.</p>
+  {{ day|date:"F j, Y" }}.</p>
 {% endblock %}
